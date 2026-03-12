@@ -389,6 +389,62 @@
             .hero { padding-top: 140px; }
             .experience-badge { left: 20px; bottom: -20px; }
         }
+
+        /* Responsive styles for About Me section and general layout */
+        @media (max-width: 900px) {
+            #about-me .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+            #about-me img {
+                margin: 0 auto 16px auto;
+                display: block;
+            }
+        }
+        @media (max-width: 600px) {
+            #about-me h2 {
+                font-size: 2rem;
+            }
+            #about-me h4 {
+                font-size: 1rem;
+            }
+            #about-me p {
+                font-size: 1rem;
+            }
+            #about-me .container {
+                padding: 0 10px;
+            }
+            #about-me div[style*='flex: 1'] {
+                min-width: 0;
+            }
+            #about-me div[style*='flex: 0 0 260px'] {
+                max-width: 180px;
+            }
+            #about-me img {
+                width: 120px !important;
+                max-width: 120px !important;
+            }
+            #about-me div[style*='display: flex; gap: 18px;'] {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        /* Responsive navigation/logo example */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.2rem !important;
+                padding: 6px 10px !important;
+            }
+        }
+        /* General responsive utility */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body>
