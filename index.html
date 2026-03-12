@@ -61,8 +61,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
         }
-
+        .hero-grid{
+            margin: 0 60px;
+        }
         .logo {
             font-family: 'Bebas Neue';
             font-size: 28px;
@@ -258,8 +261,12 @@
         .social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
         /* Section Commons */
-        .section { padding: 100px 0; }
-        .section-header { margin-bottom: 60px; }
+        .projects-grid{
+            margin: 0 60px;
+        }
+        .section { padding: 100px 0; margin: 0 60px; }
+        .section-header { margin-bottom: 60px; margin: 0 60px;
+        }
         .section-label { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 12px; }
         .section-title { font-family: 'Bebas Neue'; font-size: 48px; line-height: 1.1; }
 
@@ -287,7 +294,9 @@
             box-shadow: var(--shadow);
             border-color: var(--accent-soft);
         }
-
+        .container{
+            align-items: center;
+        }
         .service-price {
             position: absolute;
             top: 40px; right: 40px;
@@ -356,6 +365,7 @@
         /* Form */
         .contact-grid {
             display: grid;
+            margin: 0 60px;
             grid-template-columns: 0.8fr 1.2fr;
             gap: 80px;
         }
@@ -666,7 +676,10 @@
     <footer style="padding: 60px 0; border-top: 1px solid var(--border); text-align: center;">
         <div class="container">
             <a href="#" class="logo">JAMEY<span>.</span></a>
+             </div>
+        <div class="container">
             <p style="margin: 20px 0; color: var(--text-muted); font-size: 14px;">© 2026 Jamey Victor Yope. All rights reserved.</p>
+       
         </div>
     </footer>
 
