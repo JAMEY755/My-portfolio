@@ -386,21 +386,18 @@
         .design-launcher img { width: 150px; height: 140px; object-fit: cover; border-radius: 8px; }
         .design-launcher h3 { font-family: 'Bebas Neue'; font-size: 32px; margin-bottom: 6px; }
         .design-launcher p { color: var(--text-muted); margin-bottom: 12px; }
-        .design-modal { position: fixed; inset: 0; z-index: 1900; display: none; overflow-y: auto; padding: 40px 20px; background: rgba(248,250,252,0.97); }
-        .design-modal.open { display: block; }
-        .design-modal-content { max-width: 1200px; margin: 0 auto; padding: 34px; background: white; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .design-modal { display: block; width: min(1200px, calc(100% - 20px)); height: calc(100vh - 32px); max-height: calc(100vh - 32px); margin: auto; padding: 34px; border: 1px solid var(--border); border-radius: var(--radius); background: white; color: var(--text-main); overflow-y: auto; overflow-x: hidden; box-sizing: border-box; -webkit-overflow-scrolling: touch; }
+        .design-modal::backdrop { background: rgba(15,23,42,0.72); }
         .design-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
         .design-modal-close { flex: 0 0 auto; border: 1px solid var(--border); background: white; color: var(--text-main); border-radius: 50%; width: 42px; height: 42px; font-size: 24px; cursor: pointer; }
         .design-modal-close:hover { border-color: var(--accent); color: var(--accent); }
-        body.design-modal-open { overflow: hidden; }
-
+        .design-modal .moodboard-grid { padding: 4px 10px 20px 4px; }
         @media (max-width: 600px) {
             .design-launcher { align-items: flex-start; padding: 16px; gap: 14px; }
             .design-launcher img { width: 92px; height: 100px; }
             .design-launcher h3 { font-size: 26px; }
             .design-launcher p { font-size: 13px; }
-            .design-modal { padding: 16px 10px; }
-            .design-modal-content { padding: 20px 14px; }
+            .design-modal { padding: 20px 14px; }
         }
 
         /* Web development showcase cards */
@@ -777,12 +774,12 @@
                 </span>
             </button>
 
-            <div class="design-modal" id="designModal" aria-hidden="true">
+            <dialog class="design-modal" id="designModal" aria-labelledby="designModalTitle">
                 <div class="design-modal-content">
                     <div class="design-modal-header">
                         <div>
                             <span class="section-label">Graphic Design</span>
-                            <h2 class="section-title">Photoshop Designs</h2>
+                            <h2 class="section-title" id="designModalTitle">Photoshop Designs</h2>
                         </div>
                         <button class="design-modal-close" id="designModalClose" type="button" aria-label="Close Photoshop designs">&times;</button>
                     </div>
@@ -800,7 +797,8 @@
                     <button class="filter-pill" data-filter="logos">Logos</button>
                     <button class="filter-pill" data-filter="social">Social & Church</button>
                 </div>
-            </div>
+
+            <button class="filter-pill gallery-more" id="galleryMore" type="button">Show all designs</button>
 
             <!-- Graphic design images open in the full-size lightbox when clicked. -->
             <div class="moodboard-grid" id="moodboardGrid">
@@ -833,8 +831,8 @@
                     <figcaption>New MonthFlyer</figcaption>
                 </figure>
                 <figure class="moodboard-item" data-category="banners">
-                    <img src="images/job1.png" alt="Job advertisement banner design">
-                    <figcaption>Job Advertisement</figcaption>
+                    <img src="images/job1.png" alt="Quote design">
+                    <figcaption>Quotes</figcaption>
                 </figure>
                 <figure class="moodboard-item" data-category="fellowship">
                     <img src="images/kkflyer2.jpg" alt="KK event flyer design">
@@ -934,9 +932,8 @@
                     <figcaption>MyTube Logo</figcaption>
                 </figure>
             </div>
-            <button class="filter-pill gallery-more" id="galleryMore" type="button">Show all designs</button>
                 </div>
-            </div>
+            </dialog>
         </div>
 
         <!-- ---------- WEB & APP DEVELOPMENT ---------- -->
@@ -1164,17 +1161,13 @@
         const designModalClose = document.getElementById('designModalClose');
 
         const closeDesignModal = () => {
-            designModal.classList.remove('open');
-            designModal.setAttribute('aria-hidden', 'true');
+            designModal.close();
             designLauncher.setAttribute('aria-expanded', 'false');
-            document.body.classList.remove('design-modal-open');
         };
 
         designLauncher.addEventListener('click', () => {
-            designModal.classList.add('open');
-            designModal.setAttribute('aria-hidden', 'false');
+            designModal.showModal();
             designLauncher.setAttribute('aria-expanded', 'true');
-            document.body.classList.add('design-modal-open');
         });
         designModalClose.addEventListener('click', closeDesignModal);
         designModal.addEventListener('click', event => {
@@ -1233,7 +1226,7 @@
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'Escape' && designModal.classList.contains('open')) closeDesignModal();
+            if (e.key === 'Escape' && designModal.open) closeDesignModal();
         });
     </script>
 </body>
