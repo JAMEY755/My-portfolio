@@ -61,21 +61,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
         }
         .hero-grid{
             margin: 0 60px;
         }
-        .logo {
-            font-family: 'Bebas Neue';
-            font-size: 28px;
-            text-decoration: none;
-            color: var(--text-main);
-            letter-spacing: 1.5px;
-        }
-
-        .logo span { color: var(--accent); }
-        /* The Logo Container */
         .logo {
             display: flex;
             align-items: center;
@@ -83,13 +72,14 @@
             font-weight: bold;
             font-size: 1.5rem;
             color: var(--text-main);
-            gap: 10px; /* Space between image and text if you keep both */
+            gap: 10px;
         }
 
-        /* Styling the Image */
+        .logo span { color: var(--accent); }
+
         .logo img {
-            height: 40px; /* Adjust size as needed */
-            width: auto;  /* Maintain aspect ratio */
+            height: 40px;
+            width: auto;
             display: block;
             object-fit: contain;
         }
@@ -149,19 +139,6 @@
             margin-bottom: 24px;
             letter-spacing: 0.5px;
         }
-        .about-inner {
-    display: flex;
-    flex-direction: column; /* Stack image on top of text */
-    align-items: center;    /* Center everything horizontally */
-    text-align: center;
-}
-
-.tags-wrapper {
-    display: flex;
-    flex-wrap: wrap;       /* Allows tags to drop to a new line if they're too wide */
-    justify-content: center;
-    gap: 10px;
-}
 
         h1 {
             font-family: 'Bebas Neue';
@@ -261,12 +238,8 @@
         .social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
         /* Section Commons */
-        .projects-grid{
-            margin: 0 60px;
-        }
         .section { padding: 100px 0; margin: 0 60px; }
-        .section-header { margin-bottom: 60px; margin: 0 60px;
-        }
+        .section-header { margin-bottom: 60px; margin: 0 60px; }
         .section-label { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 12px; }
         .section-title { font-family: 'Bebas Neue'; font-size: 48px; line-height: 1.1; }
 
@@ -294,9 +267,7 @@
             box-shadow: var(--shadow);
             border-color: var(--accent-soft);
         }
-        .container{
-            align-items: center;
-        }
+
         .service-price {
             position: absolute;
             top: 40px; right: 40px;
@@ -312,44 +283,182 @@
         .service-card h3 { font-family: 'Bebas Neue'; font-size: 32px; margin-bottom: 16px; }
         .service-card p { color: var(--text-muted); margin-bottom: 28px; }
 
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        /* ===== Portfolio (Graphic Design + Web Development) ===== */
+        .work-sub { margin: 0 60px 90px; }
+        .work-sub:last-child { margin-bottom: 0; }
+
+        .work-sub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 36px;
         }
 
-        .project-card {
-            position: relative;
+        .work-sub-title { font-family: 'Bebas Neue'; font-size: 30px; letter-spacing: 0.5px; }
+        .work-sub-note { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+        .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .filter-pill {
+            border: 1px solid var(--border);
+            background: transparent;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-pill.active { background: var(--text-main); color: white; border-color: var(--text-main); }
+
+        /* Graphic design moodboard-style gallery */
+        .moodboard-grid {
+            column-count: 4;
+            column-gap: 22px;
+        }
+
+        .moodboard-item {
+            break-inside: avoid;
+            margin-bottom: 22px;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 10px 10px 16px;
+            border-radius: 6px;
+            box-shadow: 0 6px 20px -8px rgba(15,23,42,0.12);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        .moodboard-item:nth-child(3n+1) { transform: rotate(-1.2deg); }
+        .moodboard-item:nth-child(3n+2) { transform: rotate(0.8deg); }
+        .moodboard-item:nth-child(3n)   { transform: rotate(-0.4deg); }
+
+        .moodboard-item:hover {
+            transform: rotate(0deg) translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+
+        .moodboard-item img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .moodboard-item figcaption {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .moodboard-item.hidden { display: none; }
+
+        /* Web development showcase cards */
+        .dev-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .dev-card {
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
-            aspect-ratio: 4/5;
-            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            background: white;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .browser-frame { background: white; }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .browser-bar span {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+            background: var(--border);
+        }
+        .browser-bar span:nth-child(1) { background: #ff5f57; }
+        .browser-bar span:nth-child(2) { background: #febc2e; }
+        .browser-bar span:nth-child(3) { background: #28c840; }
+
+        .browser-url {
+            flex: 1;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            background: white;
             border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 3px 10px;
+            margin-left: 8px;
         }
 
-        .project-card img {
-            width: 100%; height: 100%;
+        .dev-card img {
+            width: 100%;
+            aspect-ratio: 16/10;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            display: block;
         }
 
-        .project-card:hover img { transform: scale(1.1); }
+        .dev-info { padding: 26px 28px 30px; }
+        .dev-info h4 { font-family: 'Bebas Neue'; font-size: 26px; letter-spacing: 0.3px; }
+        .dev-info p { color: var(--text-muted); font-size: 14.5px; margin: 10px 0 16px; }
 
-        .project-info {
+        .dev-tags span {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 11px;
+            border-radius: 20px;
+            margin: 0 6px 6px 0;
+        }
+
+        /* Lightbox for the graphic design gallery */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 40px;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .lightbox-close {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 100%);
+            top: 28px; right: 32px;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
             color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
+            font-size: 20px;
+            cursor: pointer;
         }
-
-        .project-card:hover .project-info { opacity: 1; transform: translateY(0); }
-        .project-tag-sm { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #93c5fd; display: block; margin-bottom: 5px; }
-        .project-title { font-family: 'Bebas Neue'; font-size: 28px; }
 
         /* Stats */
         .stats-grid {
@@ -378,14 +487,14 @@
         }
 
         .services-check { display: flex; flex-wrap: wrap; gap: 10px; }
-        .check-pill { 
-            border: 1px solid var(--border); 
-            padding: 10px 20px; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-size: 12px; 
-            font-weight: 500; 
-            transition: 0.2s; 
+        .check-pill {
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: 0.2s;
         }
         .check-pill.active { background: var(--accent); color: white; border-color: var(--accent); }
 
@@ -407,8 +516,8 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 960px) {
-            .hero-grid, .contact-grid, .services-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr 1fr; }
+            .hero-grid, .contact-grid, .services-grid, .dev-grid { grid-template-columns: 1fr; }
+            .moodboard-grid { column-count: 2; }
             .nav-links { display: none; }
             .hero { padding-top: 140px; }
             .experience-badge { left: 20px; bottom: -20px; }
@@ -427,47 +536,55 @@
             }
         }
         @media (max-width: 600px) {
-            #about-me h2 {
-                font-size: 2rem;
-            }
-            #about-me h4 {
-                font-size: 1rem;
-            }
-            #about-me p {
-                font-size: 1rem;
-            }
-            #about-me .container {
-                padding: 0 10px;
-            }
-            #about-me div[style*='flex: 1'] {
-                min-width: 0;
-            }
-            #about-me div[style*='flex: 0 0 260px'] {
-                max-width: 180px;
-            }
-            #about-me img {
-                width: 120px !important;
-                max-width: 120px !important;
-            }
-            #about-me div[style*='display: flex; gap: 18px;'] {
-                flex-direction: column;
-                gap: 10px;
-            }
+            #about-me h2 { font-size: 2rem; }
+            #about-me h4 { font-size: 1rem; }
+            #about-me p { font-size: 1rem; }
+            #about-me .container { padding: 0 10px; }
+            #about-me div[style*='flex: 1'] { min-width: 0; }
+            #about-me div[style*='flex: 0 0 260px'] { max-width: 180px; }
+            #about-me img { width: 120px !important; max-width: 120px !important; }
+            #about-me div[style*='display: flex; gap: 18px;'] { flex-direction: column; gap: 10px; }
         }
-        /* Responsive navigation/logo example */
         @media (max-width: 600px) {
-            .logo {
-                font-size: 1.2rem !important;
-                padding: 6px 10px !important;
-            }
+            .logo { font-size: 1.2rem !important; padding: 6px 10px !important; }
         }
-        /* General responsive utility */
-        img, video {
-            max-width: 100%;
-            height: auto;
-        }
-        body {
-            overflow-x: hidden;
+
+        img, video { max-width: 100%; height: auto; }
+        body { overflow-x: hidden; }
+
+        @media (max-width: 600px) {
+            .container { padding-left: 20px; padding-right: 20px; }
+            nav { padding: 12px 0; }
+            .nav-inner { gap: 12px; }
+            .logo img { height: 32px; }
+            .nav-cta { padding: 9px 14px; white-space: nowrap; }
+            .hero { padding: 120px 0 72px; }
+            .hero-grid { margin: 0; gap: 48px; }
+            h1 { font-size: clamp(52px, 16vw, 72px); }
+            .hero-sub { font-size: 18px; }
+            .hero p:not(.hero-sub) { font-size: 16px; }
+            .hero-btns { flex-direction: column; gap: 10px; }
+            .hero-btns a { text-align: center; }
+            .experience-badge { left: 12px; bottom: -16px; padding: 16px; }
+            .experience-badge h3 { font-size: 26px; }
+            .section { margin: 0; padding: 72px 0; }
+            .section-header { margin: 0 0 32px; }
+            .section-title { font-size: 40px; }
+            #about-me { padding: 56px 0 36px !important; }
+            #about-me .container { padding-left: 20px; padding-right: 20px; }
+            #about-me h2 { font-size: 2rem; line-height: 1.1; }
+            #about-me div[style*='display: flex; gap: 18px;'] { flex-wrap: wrap; }
+            #services { margin: 0 12px; padding: 56px 20px; border-radius: 24px; }
+            .services-grid, .dev-grid { grid-template-columns: 1fr; }
+            .moodboard-grid { column-count: 1; }
+            .service-card { padding: 32px 24px; }
+            .service-price { top: 24px; right: 24px; font-size: 11px; padding: 4px 9px; }
+            .contact-grid { margin: 0; }
+            .work-sub { margin: 0 20px 64px; }
+            .work-sub-header { flex-direction: column; align-items: flex-start; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .form-group input, .form-group textarea { font-size: 16px; }
+            footer { padding: 44px 0 !important; }
         }
     </style>
 </head>
@@ -478,12 +595,12 @@
     <nav>
         <div class="container nav-inner">
             <a href="#" class="logo">
-                <img src="images/Ja white.png" alt="Jamey Logo">
+                <img src="images/ja-white.png" alt="Jamey Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Work</a></li>
+                <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="nav-cta">Let's Talk</a>
@@ -496,9 +613,9 @@
                 <span class="tag">Open for 2026 Collaboration</span>
                 <h1>Building<br>Digital <span>Legacy</span></h1>
                 <p class="hero-sub">Front-End Developer & UI Strategist</p>
-                <p>Helping brands turn complex ideas into seamless digital realities with over 6 months of technical expertise and creative vision.</p>
+                <p>Helping brands turn complex ideas into seamless digital realities through technical expertise and creative vision.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="nav-cta" style="padding:15px 34px;">View Work</a>
+                    <a href="#work" class="nav-cta" style="padding:15px 34px;">View Work</a>
                     <a href="#services" class="btn-outline-hero">Capabilities</a>
                 </div>
                 <div class="social-bar">
@@ -509,10 +626,10 @@
             </div>
             <div class="hero-right reveal">
                 <div class="hero-image-wrap">
-                    <img src="images/Jame m.png" alt="Jamey Victor Yope">
+                    <img src="images/jame-m.png" alt="Jamey Victor Yope">
                     <div class="experience-badge">
-                        <h3>6+</h3>
-                        <p>Months of<br>Excellence</p>
+                        <h3>CODE</h3>
+                        <p>A Reliable<br>Partner</p>
                     </div>
                 </div>
             </div>
@@ -521,7 +638,7 @@
 
     <hr class="section-divider">
 
-    <!-- About Me Section (Integrated with site styles) -->
+    <!-- About Me Section -->
     <section id="about-me" style="background: #f9f9f9; padding: 60px 0 40px 0;">
         <div class="container" style="display: flex; align-items: center; flex-wrap: wrap; gap: 40px;">
             <div style="flex: 0 0 260px; max-width: 260px;">
@@ -531,7 +648,7 @@
                 <h2 style="font-size: 2.5rem; font-weight: 700; color: #222; margin-bottom: 10px;">Jamey Victor Yope</h2>
                 <h4 style="font-size: 1.2rem; color: #666; margin-bottom: 18px;">A Bit About Me</h4>
                 <p style="font-size: 1.1rem; color: #444; margin-bottom: 28px; max-width: 600px;">
-                    I am Jamey Victor Yope, a second year student in Makerere University. I am persuing a Bachelor's degree in Software Engineering but not Limited to other skills.I am interested in observational galaxy evolution, supermassive black holes, application of machine learning algorithms to astronomical datasets, and the interstellar medium.
+                    I am Jamey Victor Yope, a third year student in Makerere University. I am persuing a Bachelor's degree in Software Engineering but not Limited to other skills. I am interested in grahic designing, video editing, persionate about innovation and love Christ.
                 </p>
                 <div style="display: flex; gap: 18px;">
                     <a href="#resume" style="background: #c6e377; color: #222; border-radius: 50px; padding: 10px 28px; font-weight: 600; text-decoration: none; transition: background 0.2s;">Artificial Intelligence(AI)</a>
@@ -550,12 +667,12 @@
             <div>
                 <span class="section-label">My Narrative</span>
                 <h2 class="section-title">Design with Purpose,<br>Build with Precision</h2>
-                <p style="margin-top:20px; color:var(--text-muted); font-size: 18px;">I specialize in bridge the gap between complex engineering and intuitive user experience. My approach is rooted in 6 months of evolving with the web.</p>
+                <p style="margin-top:20px; color:var(--text-muted); font-size: 18px;">I specialize in bridge the gap between complex engineering and intuitive user experience. My approach is motivated by a passion for staying ahead of the curve and evolving with the web through the following.</p>
                 <div class="stats-grid">
-                    <div class="stat-cell"><strong>3</strong><p>Successful Launches</p></div>
-                    <div class="stat-cell"><strong>2</strong><p>Trusted Partners</p></div>
-                    <div class="stat-cell"><strong>1</strong><p>Industry Recognitions</p></div>
-                    <div class="stat-cell"><strong>100%</strong><p>Client Satisfaction</p></div>
+                    <div class="stat-cell"><strong>Learning</strong><p>Ready to Improve</p></div>
+                    <div class="stat-cell"><strong>Clients</strong><p>Trusted Partners</p></div>
+                    <div class="stat-cell"><strong>Intentions</strong><p>Industry Recognitions</p></div>
+                    <div class="stat-cell"><strong>Values</strong><p>Client Satisfaction</p></div>
                 </div>
             </div>
         </div>
@@ -568,28 +685,28 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <span class="service-price">From UGX 200,000</span>
+                
                 <div class="service-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
                 <h3>Web Architecture</h3>
                 <p>High-performance applications built with React, Next.js, and modern cloud infrastructure.</p>
                 <p style="font-size: 0.9rem; color: rgba(#0f172a);">Terms and conditions apply</p>
             </div>
             <div class="service-card">
-                <span class="service-price">From UGX 150,000</span>
+                
                 <div class="service-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/></svg></div>
                 <h3>Brand Identity</h3>
                 <p>Visual storytelling that differentiates your brand in a crowded digital marketplace.</p>
                 <p style="font-size: 0.9rem; color: rgba(#0f172a);">Terms and conditions apply</p>
             </div>
             <div class="service-card">
-                <span class="service-price">From UGX 50,000</span>
+                
                 <div class="service-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/></svg></div>
                 <h3>Photoshop Designs</h3>
-                <p>Taking your designs to the next level including flyer dessigns, Banners, Wedding Designs, Certificates, logos etc.</p>
+                <p>Taking your designs to the next level including flyer designs, banners, wedding designs, certificates, logos etc.</p>
                 <p style="font-size: 0.9rem; color: rgba(#0f172a);">Terms and conditions apply</p>
             </div>
             <div class="service-card">
-                <span class="service-price">From UGX 2,000,000</span>
+                
                 <div class="service-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/></svg></div>
                 <h3>Application development</h3>
                 <p>Creating custom applications that meet your specific needs and exceed your expectations.</p>
@@ -598,32 +715,240 @@
         </div>
     </section>
 
-    <section id="projects" class="section container reveal">
-        <div class="section-header">
-            <span class="section-label">Work</span>
-            <h2 class="section-title">Case Studies</h2>
+    <!-- ===================== PORTFOLIO ===================== -->
+    <section id="work" class="section container reveal">
+        <div class="section-header" style="text-align: center;">
+            <span class="section-label">Portfolio</span>
+            <h2 class="section-title">Graphic Design & Web Builds</h2>
+            <p style="max-width:620px; margin:16px auto 0; color:var(--text-muted); font-size:16px;">A look at the visual design work I create in Photoshop, alongside the websites and apps I build end-to-end.</p>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="Project 1">
-                <div class="project-info">
-                    <span class="project-tag-sm">Grand Lavender</span>
-                    <div class="project-title">Hotel Booking System</div>
+
+        <!-- ---------- GRAPHIC DESIGN GALLERY ---------- -->
+        <div class="work-sub">
+            <div class="work-sub-header">
+                <div>
+                    <h3 class="work-sub-title">Graphic Design</h3>
+                    <p class="work-sub-note">Flyers, banners, certificates, logos & social/church media</p>
+                </div>
+                <div class="filter-pills" id="filterPills">
+                    <button class="filter-pill active" data-filter="all">All</button>
+                    <button class="filter-pill" data-filter="flyers">Flyers</button>
+                    <button class="filter-pill" data-filter="fellowship">Fellowship Flyers</button>
+                    <button class="filter-pill" data-filter="banners">Banners</button>
+                    <button class="filter-pill" data-filter="certificates">Certificates</button>
+                    <button class="filter-pill" data-filter="logos">Logos</button>
+                    <button class="filter-pill" data-filter="social">Social & Church</button>
                 </div>
             </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800" alt="Project 2">
-                <div class="project-info">
-                    <span class="project-tag-sm">Furry Den Clinic</span>
-                    <div class="project-title">Flyer Design</div>
+
+            <!-- Graphic design images open in the full-size lightbox when clicked. -->
+            <div class="moodboard-grid" id="moodboardGrid">
+                <figure class="moodboard-item" data-category="flyers">
+                    <img src="images/CONCERT.png" alt="Concert flyer design">
+                    <figcaption>Music Concert Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="flyers">
+                    <img src="images/Birthday2.jpg" alt="Birthday flyer design">
+                    <figcaption>Birthday Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="certificates">
+                    <img src="images/certificate.jpg" alt="Certificate design">
+                    <figcaption>Certificate Design</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/eben.png" alt="Ebenezer logo design">
+                    <figcaption>Ebenezer Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="social">
+                    <img src="images/ESSENTIALS.png" alt="Essentials social media design">
+                    <figcaption>Essentials of Life</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="social">
+                    <img src="images/happy-fathers-day.png" alt="Father's Day social media design">
+                    <figcaption>Father's Day Design</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="flyers">
+                    <img src="images/HNM.png" alt="HNM event flyer design">
+                    <figcaption>New MonthFlyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="banners">
+                    <img src="images/job1.png" alt="Job advertisement banner design">
+                    <figcaption>Job Advertisement</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/kkflyer2.jpg" alt="KK event flyer design">
+                    <figcaption>KK Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/KKN.png" alt="KKN logo design">
+                    <figcaption>KKN Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/kkna.jpg" alt="K.K. Namba logo design">
+                    <figcaption>KK Namba Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/kkpa.jpg" alt="K.K. promotional banner design">
+                    <figcaption>KK Promotional Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/kkplus.jpg" alt="K.K. Plus promotional banner design">
+                    <figcaption>KK Plus Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/lamBD.jpg" alt="LAM brand logo design">
+                    <figcaption>LAM Birthday</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/minelogo.png" alt="Mine logo design">
+                    <figcaption>Mine Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/mylogo.jpg" alt="Personal logo design">
+                    <figcaption>Personal Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="social">
+                    <img src="images/sabbath-worship.png" alt="Sabbath worship church media design">
+                    <figcaption>Sabbath Worship</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/snowlogo.jpg" alt="Snow logo design">
+                    <figcaption>Snow Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="social">
+                    <img src="images/storms.png" alt="Storms social media design">
+                    <figcaption>Storms Social Graphic</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/tuesdayfellowshipn.png" alt="Tuesday fellowship flyer design">
+                    <figcaption>Tuesday Fellowship</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/vertical-ebenezer-logo.png" alt="Vertical Ebenezer logo design">
+                    <figcaption>Vertical Ebenezer Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="social">
+                    <img src="images/vespers2.png" alt="Vespers church media design">
+                    <figcaption>Vespers Graphic</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/uhm.jpg" alt="UHM fellowship flyer design">
+                    <figcaption>UHM Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/FRI.jpg" alt="Friday fellowship flyer design">
+                    <figcaption>Friday Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="fellowship">
+                    <img src="images/new-month-final.jpg" alt="New month fellowship flyer design">
+                    <figcaption>New Month Fellowship Flyer</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="flyers">
+                    <img src="images/world-cup-p.png" alt="World Cup flyer design">
+                    <figcaption>World Cup Flyer</figcaption>
+                </figure>
+                
+                <figure class="moodboard-item" data-category="flyers">
+                    <img src="images/ysummit.jpg" alt="Youth Summit promotional design">
+                    <figcaption>Youth Summit Promo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/AY-white.jpg" alt="AY brand logo design">
+                    <figcaption>AY Brand Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/ay-new.jpg" alt="AY logo design">
+                    <figcaption>AY Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/dark-amc.jpg" alt="AMC logo design">
+                    <figcaption>AMC Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/mtube.jpg" alt="MTube logo design">
+                    <figcaption>youtube Logo</figcaption>
+                </figure>
+                <figure class="moodboard-item" data-category="logos">
+                    <img src="images/mytube.jpg" alt="MyTube logo design">
+                    <figcaption>MyTube Logo</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <!-- ---------- WEB & APP DEVELOPMENT ---------- -->
+        <div class="work-sub">
+            <div class="work-sub-header">
+                <div>
+                    <h3 class="work-sub-title">Web & App Development</h3>
+                    <p class="work-sub-note">Sites and apps built end-to-end, from database to interface</p>
                 </div>
             </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Project 3">
-                <div class="project-info">
-                    <span class="project-tag-sm">SaaS</span>
-                    <div class="project-title">Nexus Dashboard</div>
-                </div>
+
+            <!--
+                DEVELOPED WEBSITE / APP SCREENSHOTS
+                Each image below points to the matching project asset in the
+                images folder.
+            -->
+            <div class="dev-grid">
+                <article class="dev-card">
+                    <div class="browser-frame">
+                        <div class="browser-bar">
+                            <span></span><span></span><span></span>
+                            <div class="browser-url">vete.co.ug</div>
+                        </div>
+                        <img src="images/vete-e-commerce.jpg" alt="Vête e-commerce site screenshot">
+                    </div>
+                    <div class="dev-info">
+                        <h4>Vête</h4>
+                        <p>E-commerce site for a Kampala clothing brand, with UGX pricing, WhatsApp ordering, and MTN/Airtel Mobile Money checkout.</p>
+                        <div class="dev-tags"><span>Laravel</span><span>Tailwind</span><span>Mobile Money</span></div>
+                    </div>
+                </article>
+
+                <article class="dev-card">
+                    <div class="browser-frame">
+                        <div class="browser-bar">
+                            <span></span><span></span><span></span>
+                            <div class="browser-url">tourms-uganda.app</div>
+                        </div>
+                        <img src="images/tourms.jpg" alt="TourMS Uganda screenshot">
+                    </div>
+                    <div class="dev-info">
+                        <h4>TourMS Uganda</h4>
+                        <p>A Tourism Management System for browsing and booking tour packages, built with a redesigned, more visual welcome page.</p>
+                        <div class="dev-tags"><span>Laravel</span><span>MySQL</span></div>
+                    </div>
+                </article>
+
+                <article class="dev-card">
+                    <div class="browser-frame">
+                        <div class="browser-bar">
+                            <span></span><span></span><span></span>
+                            <div class="browser-url">forex-academy.app</div>
+                        </div>
+                        <img src="images/forex-trading-platform.jpg" alt="Forex Trading Academy Platform screenshot">
+                    </div>
+                    <div class="dev-info">
+                        <h4>Forex Trading Academy</h4>
+                        <p>An education platform pairing forex trading lessons with a virtual trading simulator, built as a group project.</p>
+                        <div class="dev-tags"><span>Flask</span><span>Python</span></div>
+                    </div>
+                </article>
+
+                <article class="dev-card">
+                    <div class="browser-frame">
+                        <div class="browser-bar">
+                            <span></span><span></span><span></span>
+                            <div class="browser-url">restaurant-saas.app</div>
+                        </div>
+                        <img src="images/magnus-bite.jpg" alt="Magnus Bite restaurant ordering app screenshot">
+                    </div>
+                    <div class="dev-info">
+                        <h4>Restaurant Management SaaS</h4>
+                        <p>A full-stack platform for restaurants to manage orders, menus, and staff from a single dashboard.</p>
+                        <div class="dev-tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node</span></div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -633,7 +958,7 @@
             <div>
                 <span class="section-label">Inquiry</span>
                 <h2 class="section-title">Ready to build<br>something?</h2>
-                <p style="margin-top:20px; color:var(--text-muted);">I am currently reviewing project proposals for Q3 & Q4 2026.</p>
+                <p style="margin-top:20px; color:var(--text-muted);">I am currently open for project proposals till late 2026.</p>
                 <div style="margin-top: 40px;">
                     <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;">Email</p>
                     <a href="mailto:jamevictor755@gmail.com" style="color: var(--text-main); text-decoration: none; font-size: 18px; font-weight: 500;">jamevictor755@gmail.com</a>
@@ -644,44 +969,50 @@
                 </div>
                 </div>
             </div>
-            <form onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:60px;background:var(--bg-secondary);border-radius:20px;\'><h3 style=\'font-family:Bebas Neue;font-size:32px;\'>Thank you!</h3><p>Your message has been received.</p></div>';">
+            <form class="contact-form" action="/api/contact" method="POST">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" placeholder="John Doe" required>
+                        <input type="text" name="name" placeholder="John Doe" autocomplete="name" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" placeholder="john@example.com" required>
+                        <input type="email" name="email" placeholder="john@example.com" autocomplete="email" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Services</label>
                     <div class="services-check">
-                        <div class="check-pill">Development</div>
-                        <div class="check-pill">Design</div>
-                        <div class="check-pill">Strategy</div>
-                        <div class="check-pill">E-commerce</div>
+                        <label class="check-pill"><input type="checkbox" name="services[]" value="Development"> Development</label>
+                        <label class="check-pill"><input type="checkbox" name="services[]" value="Design"> Design</label>
+                        <label class="check-pill"><input type="checkbox" name="services[]" value="Strategy"> Strategy</label>
+                        <label class="check-pill"><input type="checkbox" name="services[]" value="E-commerce"> E-commerce</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Message</label>
-                    <textarea rows="4" placeholder="Briefly describe your project goals..."></textarea>
+                    <textarea name="message" rows="4" placeholder="Briefly describe your project goals..." required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Inquiry</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
 
     <footer style="padding: 60px 0; border-top: 1px solid var(--border); text-align: center;">
         <div class="container">
-            <a href="#" class="logo">JAMEY<span>.</span></a>
-             </div>
+            <a href="#" class="logo" style="justify-content:center;">JAMEY<span>.</span></a>
+        </div>
         <div class="container">
             <p style="margin: 20px 0; color: var(--text-muted); font-size: 14px;">© 2026 Jamey Victor Yope. All rights reserved.</p>
-       
         </div>
     </footer>
+
+    <!-- Lightbox for enlarging graphic design pieces -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged graphic design piece">
+    </div>
 
     <script>
         // Reveal animation on scroll
@@ -702,9 +1033,53 @@
 
         // Service pill selection
         document.querySelectorAll('.check-pill').forEach(pill => {
-            pill.addEventListener('click', () => {
-                pill.classList.toggle('active');
+            const checkbox = pill.querySelector('input');
+            checkbox.addEventListener('change', () => {
+                pill.classList.toggle('active', checkbox.checked);
             });
+        });
+
+        // Send contact inquiries through the Vercel serverless function.
+        const contactForm = document.querySelector('.contact-form');
+        const formStatus = contactForm.querySelector('.form-status');
+        contactForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const submitButton = contactForm.querySelector('.submit-btn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formStatus.textContent = '';
+
+            try {
+                if (window.location.protocol === 'file:') {
+                    throw new Error('Open the site through Vercel at http://localhost:3001, not this file. Run "npm run start" in the My-portfolio folder.');
+                }
+                const formData = new FormData(contactForm);
+                const payload = Object.fromEntries(formData);
+                payload.services = formData.getAll('services[]');
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
+                });
+                const responseText = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch {
+                    result = { error: responseText || 'The server returned an unexpected response.' };
+                }
+                if (!response.ok) throw new Error(result.error || 'The email service returned an error.');
+                contactForm.reset();
+                document.querySelectorAll('.check-pill').forEach(pill => pill.classList.remove('active'));
+                formStatus.textContent = 'Thank you. Your message has been sent.';
+                formStatus.style.color = '#15803d';
+            } catch (error) {
+                formStatus.innerHTML = `${error.message} Please <a href="mailto:jamevictor755@gmail.com">email me directly</a>.`;
+                formStatus.style.color = '#b91c1c';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Inquiry';
+            }
         });
 
         // Sticky Nav logic
@@ -717,6 +1092,45 @@
                 nav.style.padding = '18px 0';
                 nav.style.boxShadow = 'none';
             }
+        });
+
+        // Graphic design gallery: category filtering
+        const filterPills = document.querySelectorAll('#filterPills .filter-pill');
+        const moodboardItems = document.querySelectorAll('#moodboardGrid .moodboard-item');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const filter = pill.dataset.filter;
+
+                moodboardItems.forEach(item => {
+                    const matches = filter === 'all' || item.dataset.category === filter;
+                    item.classList.toggle('hidden', !matches);
+                });
+            });
+        });
+
+        // Graphic design gallery: click to enlarge
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        moodboardItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('open');
+            });
+        });
+
+        const closeLightbox = () => lightbox.classList.remove('open');
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>
